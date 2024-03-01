@@ -1,0 +1,3 @@
+[submodule "Godot-UniCoroutine"]
+	path = Godot-UniCoroutine
+	url = https://github.com/emptygamer/Godot-UniCoroutine
