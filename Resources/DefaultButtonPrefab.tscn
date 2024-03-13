@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b18fesnpe6ren"]
+
+[node name="Button" type="Button"]
+theme_override_font_sizes/font_size = 24
+text = "Test"

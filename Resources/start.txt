@@ -1,0 +1,47 @@
+[show]
+Press "Space" to continue.[w]
+Flower is a KrKr-like dialog system for Unity.[lr]
+You can use commands to trigger some functions like showing image, playing audio, controlling progress in the plain text.[w]
+
+You can use [[l] to wait for user press![l] And it will continue the dialogs.[w]
+You can use [[r] to change the line![r]And it will continue the dialogs.[w]
+You can use [[c] to clean up the line![c]And it will continue the dialogs.[w]
+You can use [[lr] to wait for user press![lr]And it will change the line and continue the dialogs.[w]
+You can use [[w] to wait for user press![w]The previous text will be erased and continue the dialogs.[w]
+And you can also define your own special chars into the function map[UsageCase,2,3].[w]
+You can use [[hide] to hide the dialog[l][hide][l], [show] use [[show] to show the dialog.[w]
+...[w]......[w].........[w]
+
+You can use [[stop] or call Stop function to stop the system, [r]
+and call Resume function to resume the progress.[w]
+Press "R" to resume the system.[stop] Nice![w]
+With stop and resume, you can integrate with your gameplay system.[w]
+You can setup buttons easily by calling "SetupButtonGroup" and "SetupButton" with your customized callback functions.[w]
+If you want to show variables in this the dialog or using variables in commands or effects, you can use "SetVariable" to set up the key and the value of variable.[w]
+And using [[#YOUR_VARIABLE_NAME] to show the value.[w]
+My name is : [#MyName] [w]
+Also, you can apply <b>rich text</b> in the <color=#4fe866ff><font_size=100>flower</font_size></color> <i><color="red">system</color></i>.[w]
+Use [[wait,3000] to wait [wait,3000]3 sec, you can also modify the waiting seconds.[w]
+...[w]......[w].........[w]
+
+You can use [[audio] command to play Music or Sound.
+[audio,bgm,res://Resources/bgm.mp3,true,0,audioTransit_1_2000]
+[w]
+And also [[image] to show the image.
+[image,fg1,res://Resources/character_image.png,0,0,0,spFadeIn_1000]
+[w]
+With [[effect] you can apply effects to scene objects, for example, image or audio.
+[effect,fg1,moveTo_200_0_500]
+[effect,fg1,moveTo_0_0_500]
+[effect,fg1,moveTo_-200_0_500]
+[effect,fg1,moveTo_0_0_500]
+[lr]Of course, you can define your own effects.
+[effect,fg1,customizedRotation_2000]
+[w]
+[w]Use [[remove] to remove scene objects.[w]
+Remove the audio.
+[remove,bgm,audioTransit_0_2000]
+[lr]Remove the image.
+[remove,fg1,spFadeOut_1000]
+[w]
+...[w]......[w].........[w]

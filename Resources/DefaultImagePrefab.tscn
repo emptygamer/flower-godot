@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dvatkxtt7ivj5"]
+
+[node name="DefaultImagePrefab" type="Sprite2D"]

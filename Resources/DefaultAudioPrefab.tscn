@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://deiypu4qitrew"]
+
+[node name="DefaultAudioPrefab" type="AudioStreamPlayer2D"]

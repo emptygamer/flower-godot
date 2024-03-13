@@ -1,0 +1,2 @@
+--- This is the Gameplay demo --- [w]
+You see a door, and a key.

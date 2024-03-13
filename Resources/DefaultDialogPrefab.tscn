@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq44vk68aid75"]
+
+[sub_resource type="Gradient" id="Gradient_3jxio"]
+offsets = PackedFloat32Array(0, 0.993865, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yct8j"]
+gradient = SubResource("Gradient_3jxio")
+
+[node name="DefaultDialogPrefab" type="Node2D"]
+
+[node name="DialogPanel" type="Sprite2D" parent="."]
+z_index = 10
+position = Vector2(576, 500)
+scale = Vector2(4, 187.94)
+texture = SubResource("GradientTexture1D_yct8j")
+
+[node name="DialogText" type="RichTextLabel" parent="."]
+z_index = 10
+offset_left = 112.0
+offset_top = 427.0
+offset_right = 1049.0
+offset_bottom = 578.0
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "..."
