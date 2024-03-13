@@ -179,11 +179,11 @@ flowerSys.SetupButton("Button Demo.",()=>{
 
 |Effect Name|Target|Commands|
 |----------|----------|----------|
-|[spFadeIn](./Docs/EffectParameters.md#spfadein)|👾Sprite|Set sprite alpha from 0 to current.|
-|[spFadeOut](./Docs/EffectParameters.md#spfadeout)|👾Sprite|Set sprite alpha from current to 0.|
-|[moveTo](./Docs//EffectParameters.md#move)|🧊GameObject|Move to the position (pixel).|
-|[audioTransit](./Docs/EffectParameters.md#audiotransit)|🔊AudioSource|Set the volume from current to value.|
-|[canvasGroupTransit](./Docs/EffectParameters.md#canvasgrouptransit)|🖼CanvasGroup|Set the alpha from current to value.|
+|[spFadeIn](./Docs/EffectParameters.md#spfadein)|🖼CanvasItem|Set sprite alpha from 0 to current.|
+|[spFadeOut](./Docs/EffectParameters.md#spfadeout)|🖼CanvasItem|Set sprite alpha from current to 0.|
+|[moveTo](./Docs//EffectParameters.md#move)|🧊Node2D/3D|Move to the position (pixel).|
+|[audioTransit](./Docs/EffectParameters.md#audiotransit)|🔊AudioStreamPlayer2D|Set the volume from current to value.|
+|[canvasGroupTransit](./Docs/EffectParameters.md#canvasgrouptransit)|🖼CanvasItem|Set the alpha from current to value.|
 
 ### Customized Effects
 #### 1. Define Effect Tasks
@@ -291,7 +291,7 @@ The center of the screen is **(x:0, y:0)**, and the unit is pixel.
 
 ### Screen Reference
 The screen size is fixed, according to the project setting. (display/window/size/viewport)
-for example, if your screen size is 1280/720, and scale to 1920/1080, the (0,0) is still mapped to (640,320). 
+for example, if your screen size is 1280/720, and scale to 1920/1080, the (0,0) is still mapped to (640,360). 
 
 ## Interacting with Scene Objects
 ### Get Scene Objects
