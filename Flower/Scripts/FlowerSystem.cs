@@ -106,6 +106,7 @@ namespace Flower{
 		private Dictionary<string, string> prefabPathMap = new Dictionary<string, string>();
 		private EventHandler<TextUpdateEventArgs> _defaultTextUpdateHandler;
 		private bool _defaultLogEnable=false;
+        public ProcessModeType processMode = ProcessModeType.Normal;
 
         // Godot
         private int PROJECT_VIEWPORT_WIDTH = -1;
@@ -285,7 +286,7 @@ namespace Flower{
                 }
                 this.currentTextListResource = filePath;
             }catch(Exception e){
-                Log($"ReadTextFromResource failed.\n{e.ToString()}", LogType.Error);
+                Log($"ReadTextFromResource - {filePath} failed.\n{e.ToString()}", LogType.Error);
             }
         }
         public void SetVariable(string key, string value){
@@ -1010,6 +1011,9 @@ namespace Flower{
                     this.isTextListCompleted = true;
                 }
             }
+            if(this.processMode == ProcessModeType.Auto){
+                this.Next();
+            }
 		}
 	}
 
@@ -1031,5 +1035,20 @@ namespace Flower{
         Info,
         Warning,
         Error
+    }
+    public class EnumStringAttribute : Attribute
+    {
+        public string Value { get; }
+
+        public EnumStringAttribute(string value)
+        {
+            Value = value;
+        }
+    }
+    public enum ProcessModeType{
+        [EnumString("Normal")]
+        Normal,
+        [EnumString("Auto")]
+        Auto,
     }
 }

@@ -31,6 +31,9 @@ public partial class UsageCase : Node
         flowerSys.RegisterCommand("UsageCase", CustomizedFunction);
         // Define your customized effects.
         flowerSys.RegisterEffect("customizedRotation", EffectCustomizedRotation);
+
+        // Turn on "auto mode".
+        // flowerSys.processMode = ProcessModeType.Auto;
 	}
 
 	public override void _Process(double delta)
