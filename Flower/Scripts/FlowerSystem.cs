@@ -137,6 +137,7 @@ namespace Flower{
             RegisterCommand("async_remove", (List<string> _params) => coroutineSystem.StartCoroutine(CmdFunc_remove_Task(_params)));
             RegisterCommand("async_effect", (List<string> _params) => coroutineSystem.StartCoroutine(CmdFunc_effect_Task(_params)));
             RegisterCommand("async_audio", (List<string> _params) => coroutineSystem.StartCoroutine(CmdFunc_audio_Task(_params)));
+            RegisterCommand("wait_audio", (List<string> _params) => coroutineSystem.StartCoroutine(ApplyCmdWaiting(CmdFunc_wait_audio_Task(_params))));
 
             // Register Default Effect-Functions.
             RegisterEffect("spFadeIn", EffectSpriteAlphaFadeIn);
@@ -656,6 +657,39 @@ namespace Flower{
             }
 
             yield return null;
+        }
+        private IEnumerator CmdFunc_wait_audio_Task(List<string> _params){
+            string key;
+            
+            try{
+                key = _params[0].ToString();
+            }catch(Exception e){
+                throw new Exception($"Invalid parameters.\n{e}");
+            }
+
+            AudioStreamPlayer2D audio2D = null;
+            AudioStreamPlayer3D audio3D = null;
+            Node sceneObj = GetSceneObject(key, false);
+            try{
+                if(sceneObj == null){
+                    throw new Exception($"{key} not found.");
+                }
+
+                if(sceneObj is AudioStreamPlayer2D){
+                    audio2D = sceneObj as AudioStreamPlayer2D;
+                    
+                }else if(sceneObj is AudioStreamPlayer3D){
+                    audio3D = sceneObj as AudioStreamPlayer3D;
+                }
+            }catch(Exception e){
+                throw new Exception($"Wait audio failed.\n{e}");
+            }
+
+            if(audio2D!=null){
+                yield return new WaitUntil(() => !audio2D.Playing); 
+            }else if(audio3D != null){
+                yield return new WaitUntil(() => !audio3D.Playing);
+            }
         }
         #endregion
 
