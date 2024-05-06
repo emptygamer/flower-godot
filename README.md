@@ -111,6 +111,7 @@ It clears up.[w]
 |⚡️|[effect](./Docs/CommandParameters.md#effect)|Apply the object effect.|
 |✨|[particle](./Docs/CommandParameters.md#particle)|Spawn a particle object.|
 |🗑|[remove](./Docs/CommandParameters.md#remove)|Remove the scene object.|
+|⏱|[wait_audio](./Docs/CommandParameters.md#wait_audio)|Wait until the audio finishes playing.|
 
 ### Customized Commands
 #### 1. Define Command Functions
@@ -318,6 +319,15 @@ You can use [Variables](#variables) to inject the setting values to [Commands](#
 ### Apply to Exists Objects.
 You can use [Query Scene Objects](#query-scene-objects) to query the target scene objects by Key, and apply the settings to **Exist Objects**.
 
+## Auto mode
+ - Turn on Auto mode.
+    ```C#
+    flowerSys.processMode = ProcessModeType.Auto;
+    ```
+ - Turn off Auto mode.
+    ```C#
+    flowerSys.processMode = ProcessModeType.Normal;
+    ```
 ---
 ## Customized Event Functions
 ### Text Updated

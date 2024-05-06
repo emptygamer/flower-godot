@@ -40,7 +40,7 @@
 
 ### audio
 ```
-[audio, key, audio_path, loop, volume, effect_name]
+[audio, key, audio_path, loop, volume, effect_name, wait]
 ```
 |Parameter|Description|Type|Default|
 |---|---|---|---|
@@ -49,6 +49,7 @@
 |loop|Audio loop|Bool||
 |volume|Audio volume|Float|1|
 |effect_name|Effect name|String|""
+|wait|Wait until the audio finishes playing|Bool|false
 
 ### effect
 ```
@@ -78,3 +79,11 @@
 |---|---|---|---|
 |key|Scene object key|String|
 |effect_name|Effect name|String|""
+
+### wait_audio
+```
+[wait_audio, key]
+```
+|Parameter|Description|Type|Default|
+|---|---|---|---|
+|key|Scene object key (audio)|String|
