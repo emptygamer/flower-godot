@@ -601,6 +601,7 @@ namespace Flower{
             bool loop;
             float volume = 1;
             string effectName = "";
+            bool wait = false;
 
             try{
                 key = _params[0].ToString();
@@ -609,6 +610,7 @@ namespace Flower{
                 try{
                     volume = float.Parse(_params[3].ToString());
                     effectName = _params[4].ToString();
+                    wait = bool.Parse(_params[5]);
                 }catch(Exception){
 
                 }
@@ -616,6 +618,8 @@ namespace Flower{
                 throw new Exception($"Invalid parameters.\n{e}");
             }
 
+            AudioStreamPlayer2D audio2D = null;
+            AudioStreamPlayer3D audio3D = null;
             Node sceneObj = GetSceneObject(key, false);
             try{
                 if(sceneObj == null){
@@ -623,15 +627,15 @@ namespace Flower{
                     sceneObj = CreateAsSceneObject(key, audioPrefab, new Vector3(0, 0, 0));
                 }
                 if(sceneObj is AudioStreamPlayer2D){
-                    AudioStreamPlayer2D audioStreamPlayer = sceneObj as AudioStreamPlayer2D;
-                    audioStreamPlayer.Stream = audio;
-                    audioStreamPlayer.VolumeDb = LinearToDecibels(volume);
-                    audioStreamPlayer.Play();
+                    audio2D = sceneObj as AudioStreamPlayer2D;
+                    audio2D.Stream = audio;
+                    audio2D.VolumeDb = LinearToDecibels(volume);
+                    audio2D.Play();
                 }else if(sceneObj is AudioStreamPlayer3D){
-                    AudioStreamPlayer3D audioStreamPlayer = sceneObj as AudioStreamPlayer3D;
-                    audioStreamPlayer.Stream = audio;
-                    audioStreamPlayer.VolumeDb = LinearToDecibels(volume);
-                    audioStreamPlayer.Play();
+                    audio3D = sceneObj as AudioStreamPlayer3D;
+                    audio3D.Stream = audio;
+                    audio3D.VolumeDb = LinearToDecibels(volume);
+                    audio3D.Play();
                 }
                 sceneObj.Name = $"flower-audio-{key}";
             }catch(Exception e){
@@ -641,6 +645,14 @@ namespace Flower{
             if(effectName != ""){
                 ApplyEffect(key, effectName);
                 yield return new WaitUntil(() => this.animatingList.Count == 0);
+            }
+
+            if(wait){
+                if(audio2D!=null){
+                    yield return new WaitUntil(() => !audio2D.Playing); 
+                }else if(audio3D != null){
+                    yield return new WaitUntil(() => !audio3D.Playing);
+                }
             }
 
             yield return null;
