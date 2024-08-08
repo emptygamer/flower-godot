@@ -10,6 +10,8 @@ For extensibility, you can customize your own **commands** and **effects** with 
 
 ✨Supported for Godot4.x C# version.
 
+**Demo(Chinese)** : https://youtu.be/JsLSjzkFric
+
 [Godot for Unity](https://github.com/emptygamer/flower)
 
 ## Learn 🌺
